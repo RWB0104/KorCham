@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 
 import main.java.common.Common;
+import main.java.common.TargetURL;
 
 public class LogManager
 {
@@ -98,24 +99,34 @@ public class LogManager
 	 * 
 	 * @return: 로그파일에 로그 내용 기록 (로그파일 없을 경우 새로 생성)
 	 */
-	private void LogWrite(String text)
+	public void LogWrite(String text)
 	{
-		// 파일 쓰기 동작
-		try
+		if (Common.logActive)
 		{
-			BufferedWriter buffer = new BufferedWriter(new FileWriter(getLogFile(), true));
-			buffer.write("[" + Common.Now() + "] " + text);
-			buffer.flush();
-			buffer.close();
-		}
-		
-		// 예외 처리
-		catch (Exception e)
-		{
-			Common.Sys("로그파일 기록 실패 (" + getLogFile() + ")");
-			Common.Sys("로그 기능이 종료됩니다.");
+			// 파일 쓰기 동작
+			try
+			{
+				File file = new File(getLogFile());
+				
+				if (!file.exists())
+				{
+					file.createNewFile();
+				}
+				
+				BufferedWriter buffer = new BufferedWriter(new FileWriter(getLogFile(), true));
+				buffer.write("[" + Common.Now() + "] " + text);
+				buffer.flush();
+				buffer.close();
+			}
 			
-			Common.logActive = false;
+			// 예외 처리
+			catch (Exception e)
+			{
+				Common.Sys("로그파일 기록 실패 (" + getLogFile() + ")");
+				Common.Sys("로그 기능이 종료됩니다.");
+				
+				Common.logActive = false;
+			}
 		}
 	}
 	
@@ -169,5 +180,10 @@ public class LogManager
 			
 			Common.logActive = true;
 		}
+		
+		LogWrite("KorCham Start");
+		LogWrite("URL1: " + TargetURL.URL1.getValue());
+		LogWrite("URL1: " + TargetURL.URL2.getValue());
+		LogWrite("URL1: " + TargetURL.URL3.getValue());
 	}
 }
