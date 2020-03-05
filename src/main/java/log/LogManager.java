@@ -106,15 +106,8 @@ public class LogManager
 			// 파일 쓰기 동작
 			try
 			{
-				File file = new File(getLogFile());
-				
-				if (!file.exists())
-				{
-					file.createNewFile();
-				}
-				
 				BufferedWriter buffer = new BufferedWriter(new FileWriter(getLogFile(), true));
-				buffer.write("[" + Common.Now() + "] " + text);
+				buffer.write("[" + Common.Now() + "] " + text + "\n");
 				buffer.flush();
 				buffer.close();
 			}
@@ -143,7 +136,7 @@ public class LogManager
 		setLogPath(Common.jarPath + File.separator + "logs");
 		
 		// 로그파일 경로 지정
-		setLogFile(getLogPath() + File.separator + getStartTime() + ".log");
+		setLogFile(getLogPath() + File.separator + getStartTime().replace(":", "-") + ".log");
 		
 		File path = new File(getLogPath());
 		

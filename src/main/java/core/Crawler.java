@@ -11,6 +11,7 @@ import main.java.log.LogManager;
 public class Crawler
 {
 	private LogManager log = LogManager.getInstance();
+	private SoundManager sound = SoundManager.getInstance();
 	
 	/**
 	 * Elements인 table 객체의 j열 헤더 텍스트 값 반환 함수
@@ -80,6 +81,8 @@ public class Crawler
 					{
 						// 신청 가능 인원 수 출력
 						Common.Sys(index + "번 째 " + getBody(table, i, 0) + " " + getBody(table, i, 1) + " " + getHeader(table, j) + "(" + getBody(table, i, j) + ")");
+						
+						sound.Play();
 						
 						log.LogWrite(index + "번 째 " + getBody(table, i, 0) + " " + getBody(table, i, 1) + " " + getHeader(table, j) + "(" + getBody(table, i, j) + ")");
 					}

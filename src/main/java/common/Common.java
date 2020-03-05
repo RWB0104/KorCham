@@ -11,6 +11,8 @@ public class Common
 	// 로그 작동여부
 	public static boolean logActive = true;
 	
+	public static boolean soundActive = true;
+	
 	/**
 	 * 현재 시간 반환 함수
 	 * 
@@ -19,7 +21,7 @@ public class Common
 	public static String Now()
 	{
 		Timestamp time = new Timestamp(System.currentTimeMillis());
-		SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
 		return timeFormat.format(time);
 	}

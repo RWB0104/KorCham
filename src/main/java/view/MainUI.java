@@ -44,12 +44,16 @@ public class MainUI
 		{
 			count++;
 			
-			c.Crawling(TargetURL.URL1, "2020. 03. 20");
-			c.Crawling(TargetURL.URL2, "2020. 03. 20");
-			c.Crawling(TargetURL.URL3, "2020. 03. 20");
+			long start = System.currentTimeMillis();
 			
-			Common.Sys(count + "번 째 루틴 완료");
-			log.LogWrite(count + "번 째 루틴 완료");
+			c.Crawling(TargetURL.URL1, "2020. 03. 18");
+			c.Crawling(TargetURL.URL2, "2020. 03. 18");
+			c.Crawling(TargetURL.URL3, "2020. 03. 18");
+			
+			long end = System.currentTimeMillis();
+			
+			Common.Sys(count + "번 째 루틴 완료 (" + (end - start) + "ms)");
+			log.LogWrite(count + "번 째 루틴 완료 (" + (end - start) + "ms)");
 		}
 	}
 }
