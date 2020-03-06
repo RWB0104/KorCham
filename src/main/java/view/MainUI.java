@@ -3,12 +3,14 @@ package main.java.view;
 import main.java.common.Common;
 import main.java.common.TargetURL;
 import main.java.core.Crawler;
+import main.java.core.SoundManager;
 import main.java.log.LogManager;
 
 public class MainUI
 {
 	private static LogManager log = LogManager.getInstance();
-	private static Crawler c = new Crawler();
+	private static Crawler c = Crawler.getInstance();
+	private static SoundManager sound = SoundManager.getInstance();
 	
 	/**
 	 * 메인 동작 함수
@@ -38,6 +40,9 @@ public class MainUI
 		System.out.println("========================================================================");
 		
 		int count = 0;
+		
+		Common.Sys("사운드 테스트");
+		sound.Play();
 		
 		// 크롤링 반복
 		while (true)

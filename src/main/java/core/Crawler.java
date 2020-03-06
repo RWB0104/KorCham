@@ -13,6 +13,18 @@ public class Crawler
 	private LogManager log = LogManager.getInstance();
 	private SoundManager sound = SoundManager.getInstance();
 	
+	private static Crawler instance = new Crawler();
+	
+	/**
+	 * Crawler 인스턴스 반환 함수
+	 * 
+	 * @return instance: Crawler 인스턴스
+	 */
+	public static Crawler getInstance()
+	{
+		return instance;
+	}
+	
 	/**
 	 * Elements인 table 객체의 j열 헤더 텍스트 값 반환 함수
 	 * 

@@ -19,9 +19,9 @@ public class SoundManager
 	private static SoundManager instance = new SoundManager();
 	
 	/**
-	 * SoundManager Class 반환 함수
+	 * SoundManager 인스턴스 반환 함수
 	 * 
-	 * @return instance: SoundManager 객체 반환
+	 * @return instance: SoundManager 인스턴스
 	 */
 	public static SoundManager getInstance()
 	{
