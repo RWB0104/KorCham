@@ -11,6 +11,7 @@ public class Common
 	// 로그 작동여부
 	public static boolean logActive = true;
 	
+	// 사운드 작동 여부
 	public static boolean soundActive = true;
 	
 	/**

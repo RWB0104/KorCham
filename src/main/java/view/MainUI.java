@@ -51,9 +51,9 @@ public class MainUI
 			
 			long start = System.currentTimeMillis();
 			
-			c.Crawling(TargetURL.URL1, "2020. 03. 18");
-			c.Crawling(TargetURL.URL2, "2020. 03. 18");
-			c.Crawling(TargetURL.URL3, "2020. 03. 18");
+			c.Crawling(TargetURL.URL1, "2020. 04. 10");
+			c.Crawling(TargetURL.URL2, "2020. 04. 10");
+			c.Crawling(TargetURL.URL3, "2020. 04. 10");
 			
 			long end = System.currentTimeMillis();
 			
