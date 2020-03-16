@@ -7,16 +7,21 @@ public class Common
 {
 	// 현재 경로
 	public static String jarPath = System.getProperty("user.dir");
-
+	
+	// 로그 파일 경로
+	public static String logPath = null;
+	
 	// 사운드 파일 경로
-	public static String soundPath = null;
-
+	public static String soundFile = null;
+	
 	// 로그 작동여부
 	public static boolean logActive = true;
-
+	
 	// 사운드 작동 여부
 	public static boolean soundActive = true;
-
+	
+	public static String[][] urlList = null;
+	
 	/**
 	 * 현재 시간 반환 함수
 	 * 
@@ -26,10 +31,10 @@ public class Common
 	{
 		Timestamp time = new Timestamp(System.currentTimeMillis());
 		SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
+		
 		return timeFormat.format(time);
 	}
-
+	
 	/**
 	 * 현재 시간을 포함한 내용 콘솔 출력
 	 * 
@@ -44,7 +49,7 @@ public class Common
 		{
 			System.out.println("[" + Now() + "] " + obj);
 		}
-
+		
 		// 예외 처리
 		catch (Exception e)
 		{
