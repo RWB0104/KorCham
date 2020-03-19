@@ -7,11 +7,11 @@ import com.google.gson.JsonObject;
 
 public class Config
 {
-	private final String logPath = Common.jarPath + File.pathSeparator + "logs";
-	private final String soundFile = Common.jarPath + File.pathSeparator + "sound" + File.pathSeparator + "alert.wav";
+	private final String logPath = Common.jarPath + File.separator + "logs";
+	private final String soundFile = Common.jarPath + File.separator + "sound" + File.separator + "alert.wav";
 	
-	private final boolean logActive = true;
-	private final boolean soundActive = true;
+	private final Boolean logActive = true;
+	private final Boolean soundActive = true;
 	
 	private final JsonArray urlList = new JsonArray();
 	

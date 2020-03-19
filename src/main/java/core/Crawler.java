@@ -5,7 +5,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import main.java.common.Common;
-import main.java.common.TargetURL;
 import main.java.log.LogManager;
 
 public class Crawler
@@ -60,14 +59,19 @@ public class Crawler
 	 * 
 	 * @return: 신청 가능 여부가 마감 혹은 빈 칸이 아닐 경우, 해당 시험장의 시간과 날짜 출력
 	 */
-	public void Crawling(TargetURL url, String date)
+	public void Crawling(int num)
 	{
-		int index = url.ordinal() + 1;
+		int index = num + 1;
+		
+		boolean buzz = false;
 		
 		// 크롤링 동작
 		try
 		{
-			Document doc = Jsoup.connect(url.getValue()).get();
+			String url = Common.urlList.get(num).getAsJsonObject().get("url").getAsString();
+			String date = Common.urlList.get(num).getAsJsonObject().get("date").getAsString();
+			
+			Document doc = Jsoup.connect(url).get();
 			Elements table = doc.select("#placeInfoTable > tbody > tr");
 			Elements header = doc.select("#placeInfoTable > tbody > tr > th");
 			
@@ -94,11 +98,17 @@ public class Crawler
 						// 신청 가능 인원 수 출력
 						Common.Sys(index + "번 째 " + getBody(table, i, 0) + " " + getBody(table, i, 1) + " " + getHeader(table, j) + "(" + getBody(table, i, j) + ")");
 						
-						sound.Play();
-						
 						log.LogWrite(index + "번 째 " + getBody(table, i, 0) + " " + getBody(table, i, 1) + " " + getHeader(table, j) + "(" + getBody(table, i, j) + ")");
+						
+						buzz = true;
 					}
 				}
+			}
+			
+			// 신청 가능 인원 수가 하나라도 발생했을 경우
+			if (buzz)
+			{
+				sound.Play();
 			}
 		}
 		

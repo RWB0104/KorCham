@@ -3,6 +3,8 @@ package main.java.common;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
+import com.google.gson.JsonArray;
+
 public class Common
 {
 	// 현재 경로
@@ -20,7 +22,8 @@ public class Common
 	// 사운드 작동 여부
 	public static boolean soundActive = true;
 	
-	public static String[][] urlList = null;
+	// URL 리스트
+	public static JsonArray urlList = null;
 	
 	/**
 	 * 현재 시간 반환 함수

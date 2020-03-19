@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileWriter;
 
 import main.java.common.Common;
-import main.java.common.TargetURL;
 
 public class LogManager
 {
@@ -133,7 +132,7 @@ public class LogManager
 		setStartTime();
 		
 		// 로그 경로 지정
-		setLogPath(Common.jarPath + File.separator + "logs");
+		setLogPath(Common.logPath);
 		
 		// 로그파일 경로 지정
 		setLogFile(getLogPath() + File.separator + getStartTime().replace(":", "-") + ".log");
@@ -174,9 +173,19 @@ public class LogManager
 			Common.logActive = true;
 		}
 		
-		LogWrite("KorCham Start");
-		LogWrite("URL1: " + TargetURL.URL1.getValue());
-		LogWrite("URL1: " + TargetURL.URL2.getValue());
-		LogWrite("URL1: " + TargetURL.URL3.getValue());
+		LogWrite("KorCham Start\n");
+		
+		LogWrite("Log Path: " + getLogPath());
+		LogWrite("Sound File: " + Common.soundFile);
+		
+		LogWrite("Log Active: " + Common.logActive);
+		LogWrite("Sound Active: " + Common.soundActive);
+		
+		for (int i = 0; i < Common.urlList.size(); i++)
+		{
+			String url = Common.urlList.get(i).getAsJsonObject().get("url").getAsString();
+			
+			LogWrite("URL: " + url);
+		}
 	}
 }
