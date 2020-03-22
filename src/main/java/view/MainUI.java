@@ -44,20 +44,20 @@ public class MainUI
 		
 		int count = 0;
 		
-		Common.Sys("사운드 테스트");
+		Common.Sys("사운드 테스트\n");
 		sound.Play();
+		
+		if (Common.urlList.size() == 0)
+		{
+			Common.Sys("하나 이상의 URL 데이터가 있어야 합니다.");
+			log.LogWrite("URL 리스트 없음");
+			
+			Exit.Close();
+		}
 		
 		// 크롤링 반복
 		while (true)
 		{
-			if (Common.urlList.size() == 0)
-			{
-				Common.Sys("하나 이상의 URL 데이터가 있어야 합니다.");
-				log.LogWrite("URL 리스트 없음");
-				
-				Exit.Close();
-			}
-			
 			count++;
 			
 			long start = System.currentTimeMillis();
@@ -70,8 +70,8 @@ public class MainUI
 			
 			long end = System.currentTimeMillis();
 			
-			Common.Sys(count + "번 째 루틴 완료 (" + (end - start) + "ms)");
-			log.LogWrite(count + "번 째 루틴 완료 (" + (end - start) + "ms)");
+			Common.Sys(count + "번 째 루틴 완료 (" + (end - start) + "ms)\n");
+			log.LogWrite(count + "번 째 루틴 완료 (" + (end - start) + "ms)\n");
 		}
 	}
 }

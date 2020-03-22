@@ -173,6 +173,12 @@ public class LogManager
 			Common.logActive = true;
 		}
 		
+		Common.Sys("Log Path: " + getLogPath());
+		Common.Sys("Sound File: " + Common.soundFile);
+		
+		Common.Sys("Log Active: " + Common.logActive);
+		Common.Sys("Sound Active: " + Common.soundActive);
+		
 		LogWrite("KorCham Start\n");
 		
 		LogWrite("Log Path: " + getLogPath());
@@ -185,6 +191,7 @@ public class LogManager
 		{
 			String url = Common.urlList.get(i).getAsJsonObject().get("url").getAsString();
 			
+			Common.Sys("URL: " + url);
 			LogWrite("URL: " + url);
 		}
 	}

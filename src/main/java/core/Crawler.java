@@ -71,9 +71,13 @@ public class Crawler
 			String url = Common.urlList.get(num).getAsJsonObject().get("url").getAsString();
 			String date = Common.urlList.get(num).getAsJsonObject().get("date").getAsString();
 			
+			long connectStart = System.currentTimeMillis();
+			
 			Document doc = Jsoup.connect(url).get();
 			Elements table = doc.select("#placeInfoTable > tbody > tr");
 			Elements header = doc.select("#placeInfoTable > tbody > tr > th");
+			
+			long connectEnd = System.currentTimeMillis();
 			
 			// 행, 열의 갯수
 			int col = header.size();
@@ -82,9 +86,17 @@ public class Crawler
 			// 행의 수만큼 반복
 			for (int i = 1; i < row; i++)
 			{
+				long processStart = System.currentTimeMillis();
+				
 				// 날짜가 지정된 날짜와 동일할 경우
 				if (getBody(table, i, 0).equals(date))
 				{
+					long processEnd = System.currentTimeMillis();
+					
+					Common.Sys("URL" + (num + 1) + ": 연결시간 " + (connectEnd - connectStart) + "ms / 처리시간 " + (processEnd - processStart) + "ms");
+					
+					log.LogWrite("URL" + (num + 1) + ": 연결시간 " + (connectEnd - connectStart) + "ms / 처리시간 " + (processEnd - processStart) + "ms");
+					
 					// 종료
 					return;
 				}
