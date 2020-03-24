@@ -86,16 +86,16 @@ public class Crawler
 			// 행의 수만큼 반복
 			for (int i = 1; i < row; i++)
 			{
-				long processStart = System.currentTimeMillis();
+				long processStart = System.nanoTime();
 
 				// 날짜가 지정된 날짜와 동일할 경우
 				if (getBody(table, i, 0).equals(date))
 				{
-					long processEnd = System.currentTimeMillis();
+					long processEnd = System.nanoTime();
 
-					Common.Sys("URL" + (num + 1) + ": 연결시간 " + (connectEnd - connectStart) + "ms / 처리시간 " + (processEnd - processStart) + "ms");
+					Common.Sys("URL" + (num + 1) + ": 연결시간 " + (connectEnd - connectStart) + "ms / 처리시간 " + (processEnd - processStart) + "ns");
 
-					log.LogWrite("URL" + (num + 1) + ": 연결시간 " + (connectEnd - connectStart) + "ms / 처리시간 " + (processEnd - processStart) + "ms");
+					log.LogWrite("URL" + (num + 1) + ": 연결시간 " + (connectEnd - connectStart) + "ms / 처리시간 " + (processEnd - processStart) + "ns");
 
 					// 신청 가능 인원 수가 하나라도 발생했을 경우
 					if (buzz)
