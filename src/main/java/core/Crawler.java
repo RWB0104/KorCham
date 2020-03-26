@@ -86,16 +86,16 @@ public class Crawler
 			// 행의 수만큼 반복
 			for (int i = 1; i < row; i++)
 			{
-				long processStart = System.nanoTime();
+				double processStart = System.nanoTime();
 
 				// 날짜가 지정된 날짜와 동일할 경우
 				if (getBody(table, i, 0).equals(date))
 				{
-					long processEnd = System.nanoTime();
+					double processEnd = System.nanoTime();
 
-					Common.Sys("URL" + (num + 1) + ": 연결시간 " + (connectEnd - connectStart) + "ms / 처리시간 " + (processEnd - processStart) + "ns");
+					Common.Sysln("URL" + (num + 1) + ": 연결시간 " + (connectEnd - connectStart) + "ms / 처리시간 " + String.format("%.3f", (processEnd - processStart) / 1000000) + "ms");
 
-					log.LogWrite("URL" + (num + 1) + ": 연결시간 " + (connectEnd - connectStart) + "ms / 처리시간 " + (processEnd - processStart) + "ns");
+					log.LogWrite("URL" + (num + 1) + ": 연결시간 " + (connectEnd - connectStart) + "ms / 처리시간 " + String.format("%.3f", (processEnd - processStart) / 1000000) + "ms");
 
 					// 신청 가능 인원 수가 하나라도 발생했을 경우
 					if (buzz)
@@ -114,7 +114,7 @@ public class Crawler
 					if (!getBody(table, i, j).equals("마감") && !getBody(table, i, j).equals(""))
 					{
 						// 신청 가능 인원 수 출력
-						Common.Sys(index + "번 째 " + getBody(table, i, 0) + " " + getBody(table, i, 1) + " " + getHeader(table, j) + "(" + getBody(table, i, j) + ")");
+						Common.Sysln(index + "번 째 " + getBody(table, i, 0) + " " + getBody(table, i, 1) + " " + getHeader(table, j) + "(" + getBody(table, i, j) + ")");
 
 						log.LogWrite(index + "번 째 " + getBody(table, i, 0) + " " + getBody(table, i, 1) + " " + getHeader(table, j) + "(" + getBody(table, i, j) + ")");
 
@@ -127,7 +127,7 @@ public class Crawler
 		// 예외 처리
 		catch (Exception e)
 		{
-			Common.Sys("오류로 인한 크롤링 실패 (URL" + index + ")");
+			Common.Sysln("오류로 인한 크롤링 실패 (URL" + index + ")");
 
 			log.LogWrite("오류로 인한 크롤링 실패 (URL" + index + ")");
 		}

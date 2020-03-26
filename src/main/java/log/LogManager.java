@@ -10,13 +10,13 @@ public class LogManager
 {
 	// LogManager 객체
 	private static LogManager instance = new LogManager();
-	
+
 	// 로그 시작 시간
 	private String startTime = null;
-	
+
 	private String logPath = null;
 	private String logFile = null;
-	
+
 	/**
 	 * LogManager 인스턴스 반환 함수
 	 * 
@@ -26,7 +26,7 @@ public class LogManager
 	{
 		return instance;
 	}
-	
+
 	/**
 	 * 로그 시작 시간 반환 함수
 	 * 
@@ -36,7 +36,7 @@ public class LogManager
 	{
 		return startTime;
 	}
-	
+
 	/**
 	 * 로그 시작 시간 지정 함수
 	 * 
@@ -46,7 +46,7 @@ public class LogManager
 	{
 		startTime = Common.Now();
 	}
-	
+
 	/**
 	 * 로그 경로 반환 함수
 	 * 
@@ -56,7 +56,7 @@ public class LogManager
 	{
 		return logPath;
 	}
-	
+
 	/**
 	 * 로그 경로 지정 함수
 	 * 
@@ -68,7 +68,7 @@ public class LogManager
 	{
 		this.logPath = logPath;
 	}
-	
+
 	/**
 	 * 로그파일 경로 반환 함수
 	 * 
@@ -78,7 +78,7 @@ public class LogManager
 	{
 		return logFile;
 	}
-	
+
 	/**
 	 * 로그파일 경로 지정 함수
 	 * 
@@ -90,7 +90,7 @@ public class LogManager
 	{
 		this.logFile = logFile;
 	}
-	
+
 	/**
 	 * 로그 기록 함수
 	 * 
@@ -110,18 +110,18 @@ public class LogManager
 				buffer.flush();
 				buffer.close();
 			}
-			
+
 			// 예외 처리
 			catch (Exception e)
 			{
-				Common.Sys("로그파일 기록 실패 (" + getLogFile() + ")");
-				Common.Sys("로그 기능이 종료됩니다.");
-				
+				Common.Sysln("로그파일 기록 실패 (" + getLogFile() + ")");
+				Common.Sysln("로그 기능이 종료됩니다.");
+
 				Common.logActive = false;
 			}
 		}
 	}
-	
+
 	/**
 	 * 로그 기록 준비
 	 * 
@@ -130,69 +130,75 @@ public class LogManager
 	public void Start()
 	{
 		setStartTime();
-		
+
 		// 로그 경로 지정
 		setLogPath(Common.logPath);
-		
+
 		// 로그파일 경로 지정
 		setLogFile(getLogPath() + File.separator + getStartTime().replace(":", "-") + ".log");
-		
+
 		File path = new File(getLogPath());
-		
+
 		// 로그 저장 폴더가 없을 경우
 		if (!path.exists())
 		{
-			Common.Sys("로그 폴더 누락 감지\n");
-			
+			Common.Sysln("로그 폴더 누락 감지\n");
+
 			// 폴더 생성
 			if (path.mkdir())
 			{
-				Common.Sys("로그 폴더 생성 완료\n");
-				
+				Common.Sysln("로그 폴더 생성 완료\n");
+
 				Common.logActive = true;
 			}
-			
+
 			// 폴더 생성 실패
 			else
 			{
-				Common.Sys("로그 폴더 생성 불가");
-				Common.Sys("관리자 권한으로 프로그램을 실행하거나 직접 생성하세요.");
-				Common.Sys("로그 폴더가 없으므로 로그 파일이 생성되지 않습니다.\n");
-				
+				Common.Sysln("로그 폴더 생성 불가");
+				Common.Sysln("관리자 권한으로 프로그램을 실행하거나 직접 생성하세요.");
+				Common.Sysln("로그 폴더가 없으므로 로그 파일이 생성되지 않습니다.\n");
+
 				Common.logActive = false;
-				
+
 				return;
 			}
 		}
-		
+
 		// 로그 저장 폴더가 있을 경우
 		else
 		{
-			Common.Sys("로그 폴더 감지\n");
-			
+			Common.Sysln("로그 폴더 감지\n");
+
 			Common.logActive = true;
 		}
-		
-		Common.Sys("Log Path: " + getLogPath());
-		Common.Sys("Sound File: " + Common.soundFile);
-		
-		Common.Sys("Log Active: " + Common.logActive);
-		Common.Sys("Sound Active: " + Common.soundActive);
-		
+
+		Common.Sysln("Log Path: " + getLogPath());
+		Common.Sysln("Sound File: " + Common.soundFile + "\n");
+
+		Common.Sysln("Log Active: " + Common.logActive);
+		Common.Sysln("Sound Active: " + Common.soundActive + "\n");
+
 		LogWrite("KorCham Start\n");
-		
+
 		LogWrite("Log Path: " + getLogPath());
-		LogWrite("Sound File: " + Common.soundFile);
-		
+		LogWrite("Sound File: " + Common.soundFile + "\n");
+
 		LogWrite("Log Active: " + Common.logActive);
-		LogWrite("Sound Active: " + Common.soundActive);
-		
+		LogWrite("Sound Active: " + Common.soundActive + "\n");
+
 		for (int i = 0; i < Common.urlList.size(); i++)
 		{
 			String url = Common.urlList.get(i).getAsJsonObject().get("url").getAsString();
-			
-			Common.Sys("URL: " + url);
+			String date = Common.urlList.get(i).getAsJsonObject().get("date").getAsString();
+
+			Common.Sysln("URL: " + url);
+			Common.Sysln("Date: " + date);
+
 			LogWrite("URL: " + url);
+			LogWrite("Date: " + url);
 		}
+
+		System.out.println();
 	}
 }

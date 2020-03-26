@@ -68,7 +68,7 @@ public class SoundManager
 				{
 					Common.soundActive = false;
 
-					Common.Sys("사운드 파일이 존재하지 않습니다. (" + Common.soundFile + ")");
+					Common.Sysln("사운드 파일이 존재하지 않습니다. (" + Common.soundFile + ")");
 					Common.Sys("지정한 사운드 파일 경로에 기본 사운드를 다운로드 받겠습니까? (Y / N) >> ");
 
 					String result = scanner.nextLine();
@@ -123,7 +123,6 @@ public class SoundManager
 		// 사운드 파일 다운로드
 		try
 		{
-
 			URL url = new URL("https://github.com/RWB0104/KorCham/raw/master/sound/alert.wav");
 			byte[] buf;
 
@@ -140,7 +139,7 @@ public class SoundManager
 				outStream.write(buf, 0, byteRead);
 			}
 
-			Common.Sys("기본 사운드 파일 다운로드 완료");
+			Common.Sysln("기본 사운드 파일 다운로드 완료");
 
 			inStream.close();
 			outStream.close();
@@ -153,7 +152,7 @@ public class SoundManager
 		{
 			e.printStackTrace();
 
-			Common.Sys("사운드 파일 다운로드 실패. 사운드 기능을 종료합니다.");
+			Common.Sysln("사운드 파일 다운로드 실패. 사운드 기능을 종료합니다.");
 			Common.soundActive = false;
 		}
 	}
