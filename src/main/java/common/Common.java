@@ -2,6 +2,7 @@ package main.java.common;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import com.google.gson.JsonArray;
 
@@ -34,6 +35,28 @@ public class Common
 	{
 		Timestamp time = new Timestamp(System.currentTimeMillis());
 		SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+		return timeFormat.format(time);
+	}
+
+	/**
+	 * 시간 계산기
+	 * 
+	 * @param mode: 계산 대상 (ex. Calendar.DATE)
+	 * @param day: 더할 날짜
+	 * 
+	 * @return: timeFormat.format(time): 더한 시간의 포맷 (1900. 01. 01)
+	 */
+	public static String DateCalculator(int mode, int day)
+	{
+		Timestamp time = new Timestamp(System.currentTimeMillis());
+		Calendar calendar = Calendar.getInstance();
+		SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy. MM. dd");
+
+		calendar.setTimeInMillis(time.getTime());
+		calendar.add(mode, day);
+
+		time = new Timestamp(calendar.getTime().getTime());
 
 		return timeFormat.format(time);
 	}

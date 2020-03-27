@@ -1,6 +1,7 @@
 package main.java.common;
 
 import java.io.File;
+import java.util.Calendar;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -9,12 +10,12 @@ public class Config
 {
 	private final String logPath = Common.jarPath + File.separator + "logs";
 	private final String soundFile = Common.jarPath + File.separator + "sound" + File.separator + "alert.wav";
-	
+
 	private final Boolean logActive = true;
 	private final Boolean soundActive = true;
-	
+
 	private final JsonArray urlList = new JsonArray();
-	
+
 	/**
 	 * Config Class 생성 시 초기 동작 함수
 	 * 
@@ -22,26 +23,28 @@ public class Config
 	 */
 	public Config()
 	{
+		String date = Common.DateCalculator(Calendar.DATE, 15);
+
 		JsonObject object = new JsonObject();
-		
+
 		object.addProperty("url", "http://license.korcham.net/ex/dailyExamPlaceConf.do?selectJmcd=202099AKK1&selectDkcd=1&selectAreaCd=01&selectPcode=1103");
-		object.addProperty("date", "2020. 04. 10");
-		
+		object.addProperty("date", date);
+
 		urlList.add(object);
-		
+
 		object = new JsonObject();
 		object.addProperty("url", "http://license.korcham.net/ex/dailyExamPlaceConf.do?selectJmcd=202099AKK1&selectDkcd=1&selectAreaCd=01&selectPcode=1104");
-		object.addProperty("date", "2020. 04. 11");
-		
+		object.addProperty("date", date);
+
 		urlList.add(object);
-		
+
 		object = new JsonObject();
 		object.addProperty("url", "http://license.korcham.net/ex/dailyExamPlaceConf.do?selectJmcd=202099AKK1&selectDkcd=1&selectAreaCd=01&selectPcode=1105");
-		object.addProperty("date", "2020. 04. 12");
-		
+		object.addProperty("date", date);
+
 		urlList.add(object);
 	}
-	
+
 	/**
 	 * 로그 폴더 경로 반환 함수
 	 * 
@@ -51,7 +54,7 @@ public class Config
 	{
 		return logPath;
 	}
-	
+
 	/**
 	 * 사운드 파일 경로 반환 함수
 	 * 
@@ -61,7 +64,7 @@ public class Config
 	{
 		return soundFile;
 	}
-	
+
 	/**
 	 * 로그 프로세스 실행 여부 반환 함수
 	 * 
@@ -71,7 +74,7 @@ public class Config
 	{
 		return logActive;
 	}
-	
+
 	/**
 	 * 사운드 프로세스 실행 여부 반환 함수
 	 * 
@@ -81,7 +84,7 @@ public class Config
 	{
 		return soundActive;
 	}
-	
+
 	/**
 	 * URL 주소 리스트 반환 함수
 	 * 

@@ -13,7 +13,7 @@ public class MainUI
 	private static LogManager log = LogManager.getInstance();
 	private static Crawler c = Crawler.getInstance();
 	private static SoundManager sound = SoundManager.getInstance();
-
+	
 	/**
 	 * 메인 동작 함수
 	 * 
@@ -34,47 +34,57 @@ public class MainUI
 		System.out.println("888    Y88b   Y88P   888      'Y8888P'  888  888  Y888888 888  888  888 ");
 		System.out.println("========================================================================");
 		System.out.println("                                                                        ");
-		System.out.println("                              Ver 2.3                                   ");
+		System.out.println("                              Ver 2.4                                   ");
 		System.out.println("                                                                        ");
 		System.out.println("                          Developed by RWB                              ");
 		System.out.println("                             2020-03-05                                 ");
 		System.out.println("                                                                        ");
 		System.out.println("========================================================================");
-
+		
 		configManager.getConfig();
 		log.Start();
-
+		
 		int count = 0;
-
+		
 		Common.Sysln("사운드 테스트\n");
 		sound.Play();
-
+		
 		// URL 리스트가 없을 경우
 		if (Common.urlList.size() == 0)
 		{
 			Common.Sysln("하나 이상의 URL 데이터가 있어야 합니다.");
 			log.LogWrite("URL 리스트 없음");
-
+			
 			Exit.Close(true);
 		}
-
+		
 		// 크롤링 반복
 		while (true)
 		{
 			count++;
-
-			long start = System.currentTimeMillis();
-
+			
+			double start = System.currentTimeMillis();
+			
 			// URL 리스트만큼 반복
 			for (int i = 0; i < Common.urlList.size(); i++)
 			{
 				c.Crawling(i);
 			}
-
-			long end = System.currentTimeMillis();
-
-			Common.Sysln(count + "번 째 루틴 완료 (" + (end - start) + "ms)\n");
-			log.LogWrite(count + "번 째 루틴 완료 (" + (end - start) + "ms)\n");
+			
+			double end = System.currentTimeMillis();
+			double workTime = end - start;
+			
+			if (workTime >= 1000)
+			{
+				Common.Sysln(count + "번 째 루틴 완료 (" + String.format("%.3f", workTime / 1000) + "s)\n");
+				log.LogWrite(count + "번 째 루틴 완료 (" + String.format("%.3f", workTime / 1000) + "s)\n");
+			}
+			
+			else
+			{
+				Common.Sysln(count + "번 째 루틴 완료 (" + (end - start) + "ms)\n");
+				log.LogWrite(count + "번 째 루틴 완료 (" + (end - start) + "ms)\n");
+			}
 		}
 	}
 }
