@@ -103,6 +103,20 @@ public class Crawler
 			{
 				double processStart = System.nanoTime();
 				
+				// 열의 수만큼 반복
+				for (int j = 2; j < col; j++)
+				{
+					// 값의 내용이 마감 혹은 빈 칸이 아닐 경우
+					if (!getBody(table, i, j).equals("마감") && !getBody(table, i, j).equals(""))
+					{
+						// 신청 가능 인원 수 출력
+						Common.Sysln(index + "번 째 " + getBody(table, i, 0) + " " + getBody(table, i, 1) + " " + getHeader(table, j) + "(" + getBody(table, i, j) + ")");
+						log.LogWrite(index + "번 째 " + getBody(table, i, 0) + " " + getBody(table, i, 1) + " " + getHeader(table, j) + "(" + getBody(table, i, j) + ")");
+						
+						buzz = true;
+					}
+				}
+				
 				// 날짜가 지정된 날짜와 동일할 경우
 				if (getBody(table, i, 0).equals(date))
 				{
@@ -134,20 +148,6 @@ public class Crawler
 					
 					// 종료
 					return;
-				}
-				
-				// 열의 수만큼 반복
-				for (int j = 2; j < col; j++)
-				{
-					// 값의 내용이 마감 혹은 빈 칸이 아닐 경우
-					if (!getBody(table, i, j).equals("마감") && !getBody(table, i, j).equals(""))
-					{
-						// 신청 가능 인원 수 출력
-						Common.Sysln(index + "번 째 " + getBody(table, i, 0) + " " + getBody(table, i, 1) + " " + getHeader(table, j) + "(" + getBody(table, i, j) + ")");
-						log.LogWrite(index + "번 째 " + getBody(table, i, 0) + " " + getBody(table, i, 1) + " " + getHeader(table, j) + "(" + getBody(table, i, j) + ")");
-						
-						buzz = true;
-					}
 				}
 			}
 		}
