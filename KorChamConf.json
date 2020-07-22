@@ -5,16 +5,8 @@
 	"soundActive": true,
 	"urlList": [
 		{
-			"url": "http://license.korcham.net/ex/dailyExamPlaceConf.do?selectJmcd=202099AKK1&selectDkcd=1&selectAreaCd=01&selectPcode=1103",
-			"date": "2020. 04. 21"
-		},
-		{
-			"url": "http://license.korcham.net/ex/dailyExamPlaceConf.do?selectJmcd=202099AKK1&selectDkcd=1&selectAreaCd=01&selectPcode=1104",
-			"date": "2020. 04. 21"
-		},
-		{
-			"url": "http://license.korcham.net/ex/dailyExamPlaceConf.do?selectJmcd=202099AKK1&selectDkcd=1&selectAreaCd=01&selectPcode=1105",
-			"date": "2020. 04. 21"
+			"url": "http://license.korcham.net/ex/dailyExamPlaceConf.do?selectJmcd=202000AKK0&selectDkcd=1&selectAreaCd=06&selectPcode=6153",
+			"date": "2020. 09. 01"
 		}
 	]
 }
