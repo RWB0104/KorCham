@@ -6,67 +6,76 @@ import java.util.Calendar;
 
 import com.google.gson.JsonArray;
 
+/**
+ * 공통 모듈 클래스
+ * 
+ * @author RWB
+ *
+ * @since 2020.03.05 Thu 20:53
+ */
 public class Common
 {
 	// 현재 경로
 	public static String jarPath = System.getProperty("user.dir");
-
+	
 	// 로그 파일 경로
 	public static String logPath = null;
-
+	
 	// 사운드 파일 경로
 	public static String soundFile = null;
-
+	
 	// 로그 작동여부
 	public static boolean logActive = true;
-
+	
 	// 사운드 작동 여부
 	public static boolean soundActive = true;
-
+	
 	// URL 리스트
 	public static JsonArray urlList = null;
-
+	
 	/**
 	 * 현재 시간 반환 함수
 	 * 
-	 * @return timeFormat.format(time): 현재 시간의 포맷 (1900-01-01 00:00:01)
+	 * @return {String} result: 현재 시간의 포맷 (1900-01-01 00:00:01)
 	 */
 	public static String Now()
 	{
 		Timestamp time = new Timestamp(System.currentTimeMillis());
 		SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-		return timeFormat.format(time);
+		
+		String result = timeFormat.format(time);
+		
+		return result;
 	}
-
+	
 	/**
 	 * 시간 계산기
 	 * 
-	 * @param mode: 계산 대상 (ex. Calendar.DATE)
-	 * @param day: 더할 날짜
+	 * @param {int} mode: 계산 대상 (ex. Calendar.DATE)
+	 * @param {int} day: 더할 날짜
 	 * 
-	 * @return: timeFormat.format(time): 더한 시간의 포맷 (1900. 01. 01)
+	 * @return {Active}: timeFormat.format(time): 더한 시간의 포맷 (1900. 01. 01)
 	 */
 	public static String DateCalculator(int mode, int day)
 	{
 		Timestamp time = new Timestamp(System.currentTimeMillis());
 		Calendar calendar = Calendar.getInstance();
 		SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy. MM. dd");
-
+		
 		calendar.setTimeInMillis(time.getTime());
 		calendar.add(mode, day);
-
+		
 		time = new Timestamp(calendar.getTime().getTime());
-
+		
 		return timeFormat.format(time);
 	}
-
+	
 	/**
 	 * 현재 시간을 포함한 내용 콘솔 출력
 	 * 
-	 * @param obj: 표시할 내용
+	 * @param {Object} obj: 표시할 내용
 	 * 
-	 * @return: ([1900-01-01 00:00:01] 내용) 형태로 콘솔 출력
+	 * @return {Active}: ([1900-01-01 00:00:01] 내용) 형태로 콘솔 출력
 	 */
 	public static void Sys(Object obj)
 	{
@@ -75,20 +84,20 @@ public class Common
 		{
 			System.out.print("[" + Now() + "] " + obj);
 		}
-
+		
 		// 예외 처리
 		catch (Exception e)
 		{
 			System.out.println("[" + Now() + "] 표시할 수 없는 객체가 입력되었습니다.");
 		}
 	}
-
+	
 	/**
 	 * 현재 시간을 포함한 내용 콘솔 출력 (줄바꿈)
 	 * 
-	 * @param obj: 표시할 내용
+	 * @param {Object} obj: 표시할 내용
 	 * 
-	 * @return: ([1900-01-01 00:00:01] 내용) 형태로 콘솔 출력
+	 * @return {Active}: ([1900-01-01 00:00:01] 내용) 형태로 콘솔 출력
 	 */
 	public static void Sysln(Object obj)
 	{
@@ -97,7 +106,7 @@ public class Common
 		{
 			System.out.println("[" + Now() + "] " + obj);
 		}
-
+		
 		// 예외 처리
 		catch (Exception e)
 		{
