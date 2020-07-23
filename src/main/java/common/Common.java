@@ -49,6 +49,23 @@ public class Common
 	}
 	
 	/**
+	 * 현재 시간 지정포맷 반환 함수
+	 * 
+	 * @param {String} format: 시간 포맷
+	 * 
+	 * @return {String} result: 현재 시간의 포맷
+	 */
+	public static String Now(String format)
+	{
+		Timestamp time = new Timestamp(System.currentTimeMillis());
+		SimpleDateFormat timeFormat = new SimpleDateFormat(format);
+		
+		String result = timeFormat.format(time);
+		
+		return result;
+	}
+	
+	/**
 	 * 시간 계산기
 	 * 
 	 * @param {int} mode: 계산 대상 (ex. Calendar.DATE)
@@ -60,7 +77,7 @@ public class Common
 	{
 		Timestamp time = new Timestamp(System.currentTimeMillis());
 		Calendar calendar = Calendar.getInstance();
-		SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy. MM. dd");
+		SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy.MM.dd");
 		
 		calendar.setTimeInMillis(time.getTime());
 		calendar.add(mode, day);

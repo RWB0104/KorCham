@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.Scanner;
 
 import org.jsoup.Jsoup;
@@ -83,6 +84,13 @@ public class URLChecker
 		saveURL(bean);
 	}
 	
+	/**
+	 * 시험 종류 선택 및 저장 함수
+	 * 
+	 * @param {URLBean} bean: URLBean 객체
+	 * 
+	 * @return {URLBean} bean: 시험 종류 및 시험명이 저장된 URLBean 객체
+	 */
 	private URLBean selectExam(URLBean bean)
 	{
 		String result = null;
@@ -103,6 +111,7 @@ public class URLChecker
 				
 				Elements elements = document.select("#selectJmcd > option");
 				
+				String[] name = new String[elements.size()];
 				String[] data = new String[elements.size()];
 				
 				System.out.println();
@@ -119,6 +128,7 @@ public class URLChecker
 				{
 					System.out.println("  [" + (i + 1) + "] " + elements.get(i).text());
 					
+					name[i] = elements.get(i).text();
 					data[i] = elements.get(i).attr("value");
 				}
 				
@@ -148,6 +158,8 @@ public class URLChecker
 					if (active > -1)
 					{
 						result = data[active];
+						
+						bean.setExamName(name[active]);
 					}
 					
 					bean.setExam(result);
@@ -195,6 +207,13 @@ public class URLChecker
 		return bean;
 	}
 	
+	/**
+	 * 시험 등급 선택 및 저장 함수
+	 * 
+	 * @param {URLBean} bean: URLBean 객체
+	 * 
+	 * @return {URLBean} bean: 시험 등급 및 시험 등급명이 저장된 URLBean 객체
+	 */
 	private URLBean selectLevel(URLBean bean)
 	{
 		String result = null;
@@ -240,6 +259,7 @@ public class URLChecker
 				
 				JsonArray array = object.get("result").getAsJsonArray();
 				
+				String[] name = new String[array.size()];
 				String[] data = new String[array.size()];
 				
 				System.out.println();
@@ -259,6 +279,7 @@ public class URLChecker
 					
 					System.out.println("  [" + (i + 1) + "] " + type + " " + level);
 					
+					name[i] = level;
 					data[i] = array.get(i).getAsJsonObject().get("elevel").getAsString();
 				}
 				
@@ -288,10 +309,11 @@ public class URLChecker
 					if (active > -1)
 					{
 						result = data[active];
+						
+						bean.setLevelName(name[active]);
 					}
 					
 					bean.setLevel(result);
-					System.err.println(result);
 					
 					break;
 				}
@@ -336,6 +358,13 @@ public class URLChecker
 		return bean;
 	}
 	
+	/**
+	 * 시험장 선택 및 저장 함수
+	 * 
+	 * @param {URLBean} bean: URLBean 객체
+	 * 
+	 * @return {URLBean} bean: 시험장 및 시험장명이 저장된 URLBean 객체
+	 */
 	private URLBean selectPlace(URLBean bean)
 	{
 		String result = null;
@@ -356,6 +385,7 @@ public class URLChecker
 				
 				Elements elements = document.select("#selectAreaCd > option");
 				
+				String[] name = new String[elements.size()];
 				String[] data = new String[elements.size()];
 				
 				System.out.println();
@@ -372,6 +402,7 @@ public class URLChecker
 				{
 					System.out.println("  [" + (i + 1) + "] " + elements.get(i).text());
 					
+					name[i] = elements.get(i).text();
 					data[i] = elements.get(i).attr("value");
 				}
 				
@@ -401,6 +432,8 @@ public class URLChecker
 					if (active > -1)
 					{
 						result = data[active];
+						
+						bean.setPlaceName(name[active]);
 					}
 					
 					bean.setPlace(result);
@@ -448,6 +481,10 @@ public class URLChecker
 		return bean;
 	}
 	
+	/**
+	 * 
+	 * @param bean
+	 */
 	private void saveURL(URLBean bean)
 	{
 		try
@@ -505,15 +542,26 @@ public class URLChecker
 				file.mkdir();
 			}
 			
-			FileWriter writer = new FileWriter(file.getPath() + File.separator + "url.txt");
+			file = new File(file.getPath() + File.separator + Common.Now("yyyyMMddHHmm") + "_" + bean.getName() + ".txt");
+			
+			FileWriter writer = new FileWriter(file);
 			
 			for (int i = 0; i < array.size(); i++)
 			{
 				// URL 저장 시도
 				try
 				{
+					StringBuffer buffer = new StringBuffer("selectAreaCd=");
+					buffer.append(bean.getPlace());
+					buffer.append("&selectDkcd=");
+					buffer.append(bean.getLevel());
+					buffer.append("&selectJmcd=");
+					buffer.append(bean.getExam());
+					buffer.append("&selectPcode=");
+					buffer.append(array.get(i).getAsJsonObject().get("placeCode").getAsString());
+					
 					String name = array.get(i).getAsJsonObject().get("placeName").getAsString();
-					String realURL = "http://license.korcham.net/ex/ajaxDailyExamSangwiList.do?" + bean.getParam();
+					String realURL = "http://license.korcham.net/ex/dailyExamPlaceConf.do?" + buffer.toString();
 					String address = array.get(i).getAsJsonObject().get("address").getAsString();
 					String tel = array.get(i).getAsJsonObject().get("phone").getAsString();
 					
@@ -521,7 +569,7 @@ public class URLChecker
 					writer.append(realURL + "\n");
 					writer.append(address + "\n");
 					writer.append(tel + "\n");
-					writer.append("https://m.map.naver.com/search2/search.nhn?query=" + address + "#/map\n\n");
+					writer.append("https://m.map.naver.com/search2/search.nhn?query=" + URLEncoder.encode(address, "UTF-8") + "#/map\n\n");
 					writer.flush();
 					
 					System.out.println("  [" + (i + 1) + "] 기록 완료 \t\t " + name + "");
@@ -537,7 +585,10 @@ public class URLChecker
 				}
 			}
 			
-			System.out.println("저장 경로 : " + file.getPath() + File.separator + "url.txt");
+			System.out.println();
+			System.out.println("  저장 경로 : " + file.getPath());
+			System.out.println();
+			System.out.println("========================================================================");
 			
 			writer.close();
 		}

@@ -1,12 +1,12 @@
 {
-	"logPath": "C:\\Users\\psj17\\source\\eclipse-workspace\\KorCham\\logs",
-	"soundFile": "C:\\Users\\psj17\\source\\eclipse-workspace\\KorCham\\sound\\alert.wav",
+	"logPath": "D:\\source\\eclipse-workspace\\KorCham\\compile\\logs",
+	"soundFile": "D:\\source\\eclipse-workspace\\KorCham\\compile\\sound\\alert.wav",
 	"logActive": true,
 	"soundActive": true,
 	"urlList": [
 		{
-			"url": "http://license.korcham.net/ex/dailyExamPlaceConf.do?selectJmcd=202000AKK0&selectDkcd=1&selectAreaCd=06&selectPcode=6153",
-			"date": "2020. 09. 01"
+			"url": "http://license.korcham.net/ex/dailyExamPlaceConf.do?selectAreaCd=06&selectDkcd=1&selectJmcd=202099AKK1&selectPcode=6103",
+			"date": "2020.08.25"
 		}
 	]
 }

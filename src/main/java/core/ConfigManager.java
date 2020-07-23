@@ -12,6 +12,7 @@ import com.google.gson.GsonBuilder;
 import main.java.common.Common;
 import main.java.common.Config;
 import main.java.common.Exit;
+import main.java.log.LogManager;
 
 /**
  * 설정 기능 클래스
@@ -23,6 +24,9 @@ import main.java.common.Exit;
 public class ConfigManager
 {
 	private static ConfigManager instance = new ConfigManager();
+	
+	private static LogManager logManager = LogManager.getInstance();
+	private static SoundManager soundManager = SoundManager.getInstance();
 	
 	private Config config = new Config();
 	
@@ -78,6 +82,41 @@ public class ConfigManager
 			Common.Sysln("설정파일을 읽는 중 오류가 발생했습니다. 설정파일에 올바른 값을 입력하세요.");
 			Exit.Close(false);
 		}
+	}
+	
+	/**
+	 * 설정 확인 함수
+	 * 
+	 * @return {Active}: 설정 파일 값 출력
+	 */
+	public void checkConfig()
+	{
+		System.out.println();
+		
+		getConfig();
+		
+		Common.Sysln("Log Path: " + logManager.getLogPath());
+		Common.Sysln("Sound File: " + Common.soundFile + "\n");
+		
+		Common.Sysln("Log Active: " + Common.logActive);
+		Common.Sysln("Sound Active: " + Common.soundActive + "\n");
+		
+		for (int i = 0; i < Common.urlList.size(); i++)
+		{
+			String url = Common.urlList.get(i).getAsJsonObject().get("url").getAsString();
+			String date = Common.urlList.get(i).getAsJsonObject().get("date").getAsString();
+			
+			Common.Sysln("URL: " + url);
+			Common.Sysln("Date: " + date);
+		}
+		
+		System.out.println();
+		
+		Common.Sysln("사운드 테스트");
+		
+		soundManager.Play();
+		
+		System.out.println();
 	}
 	
 	/**

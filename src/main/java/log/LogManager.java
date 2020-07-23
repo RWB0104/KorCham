@@ -180,12 +180,6 @@ public class LogManager
 			Common.logActive = true;
 		}
 		
-		Common.Sysln("Log Path: " + getLogPath());
-		Common.Sysln("Sound File: " + Common.soundFile + "\n");
-		
-		Common.Sysln("Log Active: " + Common.logActive);
-		Common.Sysln("Sound Active: " + Common.soundActive + "\n");
-		
 		LogWrite("KorCham Start\n");
 		
 		LogWrite("Log Path: " + getLogPath());
@@ -199,11 +193,8 @@ public class LogManager
 			String url = Common.urlList.get(i).getAsJsonObject().get("url").getAsString();
 			String date = Common.urlList.get(i).getAsJsonObject().get("date").getAsString();
 			
-			Common.Sysln("URL: " + url);
-			Common.Sysln("Date: " + date);
-			
 			LogWrite("URL: " + url);
-			LogWrite("Date: " + url);
+			LogWrite("Date: " + date);
 		}
 		
 		System.out.println();

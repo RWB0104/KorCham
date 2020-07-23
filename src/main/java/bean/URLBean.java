@@ -12,11 +12,20 @@ public class URLBean
 	// 시험
 	private String exam;
 	
+	// 시험명
+	private String examName;
+	
 	// 등급
 	private String level;
 	
+	// 등급명
+	private String levelName;
+	
 	// 시험장
 	private String place;
+	
+	// 시험장명
+	private String placeName;
 	
 	/**
 	 * 시험 반환 함수
@@ -38,6 +47,28 @@ public class URLBean
 	public void setExam(String exam)
 	{
 		this.exam = exam;
+	}
+	
+	/**
+	 * 시험명 반환 함수
+	 * 
+	 * @return {String} examName: 시험명
+	 */
+	public String getExamName()
+	{
+		return examName;
+	}
+	
+	/**
+	 * 시험명 할당 함수
+	 * 
+	 * @param {String} examName: 시험명
+	 * 
+	 * @return {Active}: 해당 클래스의 examName에 값 할당
+	 */
+	public void setExamName(String examName)
+	{
+		this.examName = examName;
 	}
 	
 	/**
@@ -63,6 +94,28 @@ public class URLBean
 	}
 	
 	/**
+	 * 등급명 반환 함수
+	 * 
+	 * @return {String} levelName: 등급명
+	 */
+	public String getLevelName()
+	{
+		return levelName;
+	}
+	
+	/**
+	 * 등급명 할당 함수
+	 * 
+	 * @param {String} levelName: 등급명
+	 * 
+	 * @return {Active}: 해당 클래스의 levelName에 값 할당
+	 */
+	public void setLevelName(String levelName)
+	{
+		this.levelName = levelName;
+	}
+	
+	/**
 	 * 시험장 반환 함수
 	 * 
 	 * @return {String} place: 시험장
@@ -85,6 +138,28 @@ public class URLBean
 	}
 	
 	/**
+	 * 시험장명 반환 함수
+	 * 
+	 * @return {String} placeName: 시험장명
+	 */
+	public String getPlaceName()
+	{
+		return placeName;
+	}
+	
+	/**
+	 * 시험장명 할당 함수
+	 * 
+	 * @param {String} placeName: 시험장명
+	 * 
+	 * @return {Active}: 해당 클래스의 placeName에 값 할당
+	 */
+	public void setPlaceName(String placeName)
+	{
+		this.placeName = placeName;
+	}
+	
+	/**
 	 * URL 파라미터 반환 함수
 	 * 
 	 * @return {String} param: URL 파라미터
@@ -101,5 +176,24 @@ public class URLBean
 		String param = buffer.toString();
 		
 		return param;
+	}
+	
+	/**
+	 * 시험 전체 이름 반환 함수
+	 * 
+	 * @return {String} name: 시험 전체 이름
+	 */
+	public String getName()
+	{
+		StringBuffer buffer = new StringBuffer(getExamName());
+		buffer.append(" ");
+		buffer.append(getLevelName());
+		buffer.append(" ");
+		buffer.append(getPlaceName());
+		buffer.append(" ");
+		
+		String name = buffer.toString();
+		
+		return name;
 	}
 }

@@ -127,7 +127,7 @@ public class Crawler
 				}
 				
 				// 날짜가 지정된 날짜와 동일할 경우
-				if (getBody(table, i, 0).equals(date))
+				if (getBody(table, i, 0).replace(" ", "").equals(date.replace(" ", "")))
 				{
 					break;
 				}

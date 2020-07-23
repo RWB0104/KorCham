@@ -47,7 +47,7 @@ public class MainUI
 		System.out.println("888    Y88b   Y88P   888      'Y8888P'  888  888  Y888888 888  888  888 ");
 		System.out.println("========================================================================");
 		System.out.println("                                                                        ");
-		System.out.println("                              Ver 2.4                                   ");
+		System.out.println("                              Ver 3.0                                   ");
 		System.out.println("                                                                        ");
 		System.out.println("                          Developed by RWB                              ");
 		System.out.println("                             2020-03-05                                 ");
@@ -68,7 +68,7 @@ public class MainUI
 					break;
 				
 				case 2:
-					System.out.println("설정 확인 로직 작성");
+					configManager.checkConfig();
 					break;
 				
 				case 3:
@@ -142,6 +142,7 @@ public class MainUI
 		{
 			System.out.println();
 			System.err.println("[ERROR] 메뉴 선택 실패.");
+			e.printStackTrace();
 		}
 		
 		return active;

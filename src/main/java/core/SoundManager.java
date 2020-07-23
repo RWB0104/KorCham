@@ -28,7 +28,7 @@ import main.java.log.LogManager;
 public class SoundManager
 {
 	private LogManager log = LogManager.getInstance();
-	private Scanner scanner = new Scanner(System.in);
+	private static Scanner scanner = new Scanner(System.in);
 	
 	private static SoundManager instance = new SoundManager();
 	
@@ -73,14 +73,12 @@ public class SoundManager
 				// 사운드 파일이 없을 경우
 				else
 				{
-					Common.soundActive = false;
-					
 					Common.Sysln("사운드 파일이 존재하지 않습니다. (" + Common.soundFile + ")");
 					Common.Sys("지정한 사운드 파일 경로에 기본 사운드를 다운로드 받겠습니까? (Y / N) >> ");
 					
 					String result = scanner.nextLine();
 					
-					scanner.close();
+					System.out.println();
 					
 					// 사운드 파일 다운로드 승인
 					if (result.toUpperCase().equals("Y"))
@@ -91,6 +89,8 @@ public class SoundManager
 					// 아닐 경우
 					else
 					{
+						Common.soundActive = false;
+						
 						log.LogWrite("사운드 파일 없음. (" + Common.soundFile + ")");
 						log.LogWrite("사운드 기능 종료 (soundActive: " + Common.soundActive + ")");
 					}
@@ -139,7 +139,7 @@ public class SoundManager
 			
 			connection = url.openConnection();
 			inStream = connection.getInputStream();
-			buf = new byte[1024];
+			buf = new byte[10240];
 			
 			while ((byteRead = inStream.read(buf)) != -1)
 			{
@@ -162,5 +162,7 @@ public class SoundManager
 			Common.Sysln("사운드 파일 다운로드 실패. 사운드 기능을 종료합니다.");
 			Common.soundActive = false;
 		}
+		
+		System.out.println();
 	}
 }
