@@ -2,7 +2,7 @@
 상공회의소 자격증 자리확인 매크로
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/50317129/78545141-3de1d980-7836-11ea-81f4-08cdeb1f2c92.png" alt="Main" title="Main">
+	<img src="https://user-images.githubusercontent.com/50317129/88394919-34877780-cdfb-11ea-9601-3e583e6babb0.png" alt="Main" title="Main">
 </p>
 
 2월 끝자락에 공부를 마무리하고 시험을 보려고 했으나, COVID-19의 여파로 시험이 14일까지 중지되는 바람에 가뜩이나 없는 자리가 몰려서 자리를 구할 수가 없게됐다.
@@ -127,6 +127,8 @@ KorCham이 실행되면 KorCham.jar 위치에 설정파일이 존재하는지 �
 	<img src="https://user-images.githubusercontent.com/50317129/78545134-3c181600-7836-11ea-8261-88e19f69e923.png" alt="Main" title="Main">
 </p>
 
+<h2>JSON 설정파일의 형식을 유지해야 한다.</h2>
+
 KorChamConf.json의 형태는 위 사진과 같으며, 설정방법은 아래와 같다.
 <br />
 <br />
@@ -172,6 +174,131 @@ urlList의 경우, 배열형태로 이루어져 있어 여러 URL을 등록해�
 <br />
 
 **\\를 이용한 경로는 반드시 \\\\처럼 두번 입력해야 인식이 가능하니 주의**
+
+---
+### **세부 사항**
+<br />
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/50317129/88395104-7dd7c700-cdfb-11ea-9f78-5c19a2ba84ba.png" alt="Main" title="Main">
+</p>
+
+첫 실행 시, 로그 폴더가 없을 경우 로그 폴더를 생성하고 기록
+<br />
+실행하면 위와같이 세 가지 메뉴 선택 가능
+<br />
+정해진 메뉴의 숫자를 입력하여 메뉴 선택
+<br />
+<br />
+
+**1. 매크로 실행**
+<br />
+<br />
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/50317129/88395192-a52e9400-cdfb-11ea-85bd-9dc4398877f1.png" alt="Main" title="Main">
+</p>
+<br />
+
+알람용 사운드 파일이 없을 경우 서버에서 기본적인 사운드 파일을 다운로드.
+<br />
+사용자의 판단에 따라 다운로드 가능
+<br />
+사운드 파일이 없어도 동작에는 이상이 없으며, 알람은 울리지 않음
+<br />
+<br />
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/50317129/88395222-b081bf80-cdfb-11ea-869c-498798b24021.png" alt="Main" title="Main">
+</p>
+
+<br />
+자리가 있을 경우 위와 같이 지정된 시험장의 시험 날짜, 시간, 좌석 수를 표시하며, 이를 하나의 루틴이라 명명
+<br />
+자리가 감지되면 설정파일에 지정한 알람이 출력됨
+<br />
+URL이 여러개일 경우 URL1, URL2, URL3, ~ , URLn으로 표시함
+<br />
+설정파일에서 지정할 수 있는 URL의 갯수에는 제한이 없으나, URL이 많으면 많을 수록 한 루틴을 처리하는 시간이 길어짐
+<br />
+<br />
+
+**2. 설정 확인**
+<br />
+<br />
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/50317129/88395273-c5f6e980-cdfb-11ea-92b4-b2c07f5deab2.png" alt="Main" title="Main">
+</p>
+<br />
+
+설정파일에 입력한 내용을 확인할 수 있으며, 프로그램은 이 메뉴에서 표시하는 값을 기준으로 동작함.
+<br />
+해당 기능에서 사운드 테스트를 진행하는데, 지정한 경로에 사운드파일이 감지되지 않을 경우 기본 사운드 파일 다운로드 유무를 묻는다.
+<br />
+<br />
+
+**3. 시험장 URL 리스트 출력**
+<br />
+<br />
+
+아마 대다수의 사용자에게 가장 필요할 것 같은 기능
+<br />
+<br />
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/50317129/88395321-d60ec900-cdfb-11ea-9e81-d530144a0cbb.png" alt="Main" title="Main">
+</p>
+<br />
+
+원하는 시험의 종류, 급수, 지역을 선택하면, 해당하는 시험장의 정보를 사용자에게 제공함.
+<br />
+공식적으로 지원하는 시험은 상공회의소에서 진행하는 상시시험 전체
+<br />
+원하는 시험의 번호를 선택하여 진행
+<br />
+<br />
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/50317129/88395338-ddce6d80-cdfb-11ea-95b8-d28188b1808b.png" alt="Main" title="Main">
+</p>
+<br />
+
+시험을 선택하면, 해당하는 시험의 급수를 선택할 수 있다.
+<br />
+원하는 급수를 선택하여 진행
+<br />
+<br />
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/50317129/88395352-e757d580-cdfb-11ea-9123-66748f3c7d1c.png" alt="Main" title="Main">
+</p>
+<br />
+
+해당 시험을 볼 수 있는 지역을 선택할 수 있다.
+<br />
+원하는 지역을 선택하여 URL을 제공받을 수 있다.
+<br />
+<br />
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/50317129/88395507-2a19ad80-cdfc-11ea-8662-91d70dfa2556.png" alt="Main" title="Main">
+</p>
+<br />
+
+위와 같이 `.txt` 형태로 저장되며, 프로그램의 위치에 `url` 폴더를 생성하고 URL이 담긴 파일을 생성함.
+<br />
+<br />
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/50317129/88395609-4f0e2080-cdfc-11ea-99dc-0ceaff5ed6b1.png" alt="Main" title="Main">
+</p>
+<br />
+
+URL은 위 사진과 같이 저장되며, 순서대로 시험장 이름, 시험장 URL, 전화번호, 시험장 위치 지도 URL을 기록함.
+<br />
+<h2>URL 리스트의 두 번째 항목인 http://license.korcham.net/로 시작하는 URL이 시험장 URL이다.</h2>
+원하는 시험장의 URL을 복사하고, 이를 설정파일에 양식에 맞춰 기록하면 된다.
 
 ---
 ### **주의사항**
