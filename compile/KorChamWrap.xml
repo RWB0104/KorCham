@@ -8,14 +8,15 @@
   <cmdLine></cmdLine>
   <chdir>.</chdir>
   <priority>normal</priority>
-  <downloadUrl>http://java.com/download</downloadUrl>
+  <downloadUrl></downloadUrl>
   <supportUrl></supportUrl>
   <stayAlive>false</stayAlive>
   <restartOnCrash>false</restartOnCrash>
   <manifest></manifest>
-  <icon></icon>
+  <icon>D:\source\eclipse-workspace\KorCham\compile\icon.ico</icon>
   <classPath>
     <mainClass>org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader</mainClass>
+    <cp>.</cp>
   </classPath>
   <jre>
     <path>jre</path>
@@ -29,7 +30,7 @@
   <versionInfo>
     <fileVersion>3.0.0.0</fileVersion>
     <txtFileVersion>3.0.0.0</txtFileVersion>
-    <fileDescription>상공회의소 자격증 자리확인 매크로</fileDescription>
+    <fileDescription>License Checker Macro</fileDescription>
     <copyright>Copyright(c) 2020 RWB All rights reserved</copyright>
     <productVersion>3.0.0.0</productVersion>
     <txtProductVersion>3.0.0.0</txtProductVersion>
@@ -40,4 +41,11 @@
     <trademarks></trademarks>
     <language>KOREAN</language>
   </versionInfo>
+  <messages>
+    <startupErr>An error occurred while starting the application.</startupErr>
+    <bundledJreErr>This application was configured to use a bundled Java Runtime Environment but the runtime is missing or corrupted.</bundledJreErr>
+    <jreVersionErr>This application requires a Java Runtime Environment</jreVersionErr>
+    <launcherErr>The registry refers to a nonexistent Java Runtime Environment installation or the runtime is corrupted.</launcherErr>
+    <instanceAlreadyExistsMsg>An application instance is already running.</instanceAlreadyExistsMsg>
+  </messages>
 </launch4jConfig>

@@ -482,8 +482,11 @@ public class URLChecker
 	}
 	
 	/**
+	 * 시험장 URL 저장 함수
 	 * 
-	 * @param bean
+	 * @param {URLBean} bean: URLBean 객체
+	 * 
+	 * @return {Active}: 해당하는 URL 리스트 txt 파일
 	 */
 	private void saveURL(URLBean bean)
 	{
@@ -587,12 +590,14 @@ public class URLChecker
 			
 			System.out.println();
 			System.out.println("  저장 경로 : " + file.getPath());
+			System.out.println("  위 파일을 열고, 원하시는 시험장의 URL을 복사하여 설정파일에 입력하세요.");
 			System.out.println();
 			System.out.println("========================================================================");
 			
 			writer.close();
 		}
 		
+		// 오류
 		catch (Exception e)
 		{
 			e.printStackTrace();

@@ -8,6 +8,8 @@ import java.nio.file.Paths;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonSyntaxException;
 
 import main.java.common.Common;
 import main.java.common.Config;
@@ -63,7 +65,7 @@ public class ConfigManager
 		{
 			Gson gson = new Gson();
 			
-			String jsonStr = new String(Files.readAllBytes(Paths.get(configPath)));
+			String jsonStr = new String(Files.readAllBytes(Paths.get(configPath)), "UTF-8");
 			
 			config = gson.fromJson(jsonStr, Config.class);
 			
@@ -75,11 +77,23 @@ public class ConfigManager
 			
 			Common.urlList = config.getUrlList();
 		}
+		// TODO: 시간차 종료과정 추가하기
+		// JSON 구문 오류
+		catch (JsonSyntaxException e)
+		{
+			Common.Sysln("설정파일을 구문오류가 감지되었습니다. 설정파일이 올바른 형식을 갖고 있는지 확인해주세요.");
+		}
+		
+		// JSON 파싱 오류
+		catch (JsonParseException e)
+		{
+			Common.Sysln("설정파일의 값을 읽을 수 없습니다. 설정파일이 올바른 값을 갖고 있는지 확인해주세요.");
+		}
 		
 		// 예외 처리
 		catch (Exception e)
 		{
-			Common.Sysln("설정파일을 읽는 중 오류가 발생했습니다. 설정파일에 올바른 값을 입력하세요.");
+			Common.Sysln("설정파일을 읽는 중 오류가 발생했습니다. 설정파일이 올바른지 확인해주세요.");
 			Exit.Close(false);
 		}
 	}

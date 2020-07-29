@@ -50,7 +50,7 @@ public class Test
 		
 		catch (Exception e)
 		{
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 }
