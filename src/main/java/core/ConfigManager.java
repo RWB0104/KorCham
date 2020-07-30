@@ -82,19 +82,21 @@ public class ConfigManager
 		catch (JsonSyntaxException e)
 		{
 			Common.Sysln("설정파일을 구문오류가 감지되었습니다. 설정파일이 올바른 형식을 갖고 있는지 확인해주세요.");
+			Exit.Close(false, 5);
 		}
 		
 		// JSON 파싱 오류
 		catch (JsonParseException e)
 		{
 			Common.Sysln("설정파일의 값을 읽을 수 없습니다. 설정파일이 올바른 값을 갖고 있는지 확인해주세요.");
+			Exit.Close(false, 5);
 		}
 		
 		// 예외 처리
 		catch (Exception e)
 		{
 			Common.Sysln("설정파일을 읽는 중 오류가 발생했습니다. 설정파일이 올바른지 확인해주세요.");
-			Exit.Close(false);
+			Exit.Close(false, 5);
 		}
 	}
 	
@@ -157,7 +159,7 @@ public class ConfigManager
 		catch (Exception e)
 		{
 			Common.Sysln("설정파일을 생성할 수 없습니다. 프로그램을 종료합니다.");
-			Exit.Close(false);
+			Exit.Close(false, 5);
 		}
 	}
 }

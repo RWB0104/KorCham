@@ -166,7 +166,7 @@ public class MainUI
 			Common.Sysln("하나 이상의 URL 데이터가 있어야 합니다.");
 			log.LogWrite("URL 리스트 없음");
 			
-			Exit.Close(true);
+			Exit.Close(false, 5);
 		}
 		
 		// 크롤링 반복
