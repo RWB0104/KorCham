@@ -27,6 +27,9 @@ public class URLBean
 	// 시험장명
 	private String placeName;
 	
+	// 인코딩 파라미터
+	private String encodeTemp;
+	
 	/**
 	 * 시험 반환 함수
 	 * 
@@ -157,6 +160,28 @@ public class URLBean
 	public void setPlaceName(String placeName)
 	{
 		this.placeName = placeName;
+	}
+	
+	/**
+	 * 인코딩 파라미터 반환 함수
+	 * 
+	 * @return {String} encodeTemp: 인코딩 파라미터
+	 */
+	public String getEncodeTemp()
+	{
+		return encodeTemp;
+	}
+	
+	/**
+	 * 인코딩 파라미터 할당 함수
+	 * 
+	 * @param {String} encodeTemp: 인코딩 파라미터
+	 * 
+	 * @return {Active}: 해당 클래스의 encodeTemp에 값 할당
+	 */
+	public void setEncodeTemp(String encodeTemp)
+	{
+		this.encodeTemp = encodeTemp;
 	}
 	
 	/**

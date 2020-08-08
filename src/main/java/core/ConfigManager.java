@@ -77,7 +77,7 @@ public class ConfigManager
 			
 			Common.urlList = config.getUrlList();
 		}
-		// TODO: 시간차 종료과정 추가하기
+		
 		// JSON 구문 오류
 		catch (JsonSyntaxException e)
 		{
