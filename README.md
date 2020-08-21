@@ -5,9 +5,9 @@
 	<img src="https://user-images.githubusercontent.com/50317129/88394919-34877780-cdfb-11ea-9601-3e583e6babb0.png" alt="Main" title="Main">
 </p>
 
-<center>
+<p align="center">
 	<a href="https://github.com/RWB0104/KorCham/releases">다운로드</a>
-</center>
+</p>
 
 <br />
 
