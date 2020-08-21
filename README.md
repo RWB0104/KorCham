@@ -5,6 +5,12 @@
 	<img src="https://user-images.githubusercontent.com/50317129/88394919-34877780-cdfb-11ea-9601-3e583e6babb0.png" alt="Main" title="Main">
 </p>
 
+<center>
+	<a href="https://github.com/RWB0104/KorCham/releases">다운로드</a>
+</center>
+
+<br />
+
 2월 끝자락에 공부를 마무리하고 시험을 보려고 했으나, COVID-19의 여파로 시험이 14일까지 중지되는 바람에 가뜩이나 없는 자리가 몰려서 자리를 구할 수가 없게됐다.
 <br />
 회사에서 하루 종일 자격증 자리만 쳐다볼 수도 없는 노릇이고, 일일히 들어가기도 귀찮은데다, 까먹는 일도 더러 있어서 자리 잡기가 난감했다.
