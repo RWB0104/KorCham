@@ -9,6 +9,10 @@
 	<a href="https://github.com/RWB0104/KorCham/releases">다운로드</a>
 </p>
 
+<p align="center">
+	<a href="https://github.com/RWB0104/KorCham/issues/2">질문하기</a>
+</p>
+
 <br />
 
 2월 끝자락에 공부를 마무리하고 시험을 보려고 했으나, COVID-19의 여파로 시험이 14일까지 중지되는 바람에 가뜩이나 없는 자리가 몰려서 자리를 구할 수가 없게됐다.
