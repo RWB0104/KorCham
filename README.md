@@ -23,7 +23,11 @@
 <br />
 이 프로그램은 그러한 취지에서 개발됐다.
 
-## **KorCham 3.1 RELEASE (Latest)**
+## **KorCham 3.2 RELEASE (Latest)**
+
++ 크롤링 문제 수정
+
+## **KorCham 3.1 RELEASE**
 
 + 설정파일 한글 깨짐 수정
 
