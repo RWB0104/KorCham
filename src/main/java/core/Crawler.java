@@ -114,7 +114,6 @@ public class Crawler
 		// 오류
 		catch (Exception e)
 		{
-			e.printStackTrace();
 			System.out.println();
 			System.err.println("[ERROR] 암호화 코드 확인 실패");
 		}
