@@ -34,19 +34,19 @@ public class Config
 		
 		JsonObject object = new JsonObject();
 		
-		object.addProperty("url", "http://license.korcham.net/ex/dailyExamPlaceConf.do?selectJmcd=202099AKK1&selectDkcd=1&selectAreaCd=01&selectPcode=1103");
+		object.addProperty("url", "{URL1}");
 		object.addProperty("date", date);
 		
 		urlList.add(object);
 		
 		object = new JsonObject();
-		object.addProperty("url", "http://license.korcham.net/ex/dailyExamPlaceConf.do?selectJmcd=202099AKK1&selectDkcd=1&selectAreaCd=01&selectPcode=1104");
+		object.addProperty("url", "{URL2}");
 		object.addProperty("date", date);
 		
 		urlList.add(object);
 		
 		object = new JsonObject();
-		object.addProperty("url", "http://license.korcham.net/ex/dailyExamPlaceConf.do?selectJmcd=202099AKK1&selectDkcd=1&selectAreaCd=01&selectPcode=1105");
+		object.addProperty("url", "{URL3}");
 		object.addProperty("date", date);
 		
 		urlList.add(object);

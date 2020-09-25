@@ -11,8 +11,6 @@ import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -386,16 +384,6 @@ public class URLChecker
 				Document document = Jsoup.connect(url).timeout(5000).get();
 				
 				Elements elements = document.select("#selectAreaCd > option");
-				Elements script = document.getElementsByTag("script");
-				
-				Pattern pattern = Pattern.compile("var strTemp = \"(.+?)\";");
-				Matcher matcher = pattern.matcher(script.html());
-				
-				// 정규식과 일치할 경우
-				if (matcher.find())
-				{
-					bean.setEncodeTemp(matcher.group(1));
-				}
 				
 				String[] name = new String[elements.size()];
 				String[] data = new String[elements.size()];
@@ -574,8 +562,6 @@ public class URLChecker
 					buffer.append(bean.getExam());
 					buffer.append("&selectPcode=");
 					buffer.append(array.get(i).getAsJsonObject().get("placeCode").getAsString());
-					buffer.append("&encodeTemp=");
-					buffer.append(bean.getEncodeTemp());
 					
 					String name = array.get(i).getAsJsonObject().get("placeName").getAsString();
 					String realURL = "http://license.korcham.net/ex/dailyExamPlaceConf.do?" + buffer.toString();

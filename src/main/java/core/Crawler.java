@@ -1,5 +1,10 @@
 package main.java.core;
 
+import java.io.IOException;
+import java.net.SocketTimeoutException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -20,6 +25,8 @@ public class Crawler
 	private SoundManager sound = SoundManager.getInstance();
 	
 	private static Crawler instance = new Crawler();
+	
+	private String encode = null;
 	
 	/**
 	 * Crawler 인스턴스 반환 함수
@@ -61,6 +68,61 @@ public class Crawler
 	}
 	
 	/**
+	 * 암호화 코드 반환 함수
+	 * 
+	 * @param {String} url: URL
+	 * 
+	 * @return {String} encode: 암호화 코드
+	 */
+	private String getEncode()
+	{
+		String encode = null;
+		
+		// 암호화 코드 확인 시도
+		try
+		{
+			String url = "http://license.korcham.net/ex/dailyExamPlaceConf.do";
+			
+			Document document = Jsoup.connect(url).timeout(5000).get();
+			
+			Elements script = document.getElementsByTag("script");
+			
+			Pattern pattern = Pattern.compile("var strTemp = \"(.+?)\";");
+			Matcher matcher = pattern.matcher(script.html());
+			
+			// 정규식과 일치할 경우
+			if (matcher.find())
+			{
+				encode = matcher.group(1);
+			}
+		}
+		
+		// 응답시간 초과 오류
+		catch (SocketTimeoutException e)
+		{
+			System.out.println();
+			System.err.println("[ERROR] 서버가 응답하지 않습니다.");
+		}
+		
+		// 입출력 오류
+		catch (IOException e)
+		{
+			System.out.println();
+			System.err.println("[ERROR] 데이터 입출력 과정에서 오류가 발생했습니다.");
+		}
+		
+		// 오류
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			System.out.println();
+			System.err.println("[ERROR] 암호화 코드 확인 실패");
+		}
+		
+		return encode;
+	}
+	
+	/**
 	 * 크롤링 함수
 	 * 
 	 * @param {int} num: 인덱스
@@ -81,7 +143,20 @@ public class Crawler
 			
 			double connectStart = System.currentTimeMillis();
 			
-			Document doc = Jsoup.connect(url).get();
+			// 암호화 코드가 유효하지 않을 경우
+			if (encode == null)
+			{
+				encode = getEncode();
+			}
+			
+			StringBuilder builder = new StringBuilder();
+			builder.append(url);
+			builder.append("&encodeTemp=");
+			builder.append(encode);
+			
+			url = builder.toString();
+			
+			Document doc = Jsoup.connect(url).timeout(5000).get();
 			
 			Elements table = doc.select("#placeInfoTable > tbody > tr");
 			Elements header = doc.select("#placeInfoTable > tbody > tr > th");

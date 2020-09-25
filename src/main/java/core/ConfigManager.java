@@ -65,7 +65,7 @@ public class ConfigManager
 		{
 			Gson gson = new Gson();
 			
-			String jsonStr = new String(Files.readAllBytes(Paths.get(configPath)), "UTF-8");
+			String jsonStr = new String(Files.readAllBytes(Paths.get(configPath)), "EUC-KR");
 			
 			config = gson.fromJson(jsonStr, Config.class);
 			
