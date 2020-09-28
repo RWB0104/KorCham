@@ -30,24 +30,27 @@ public class Config
 	 */
 	public Config()
 	{
-		String date = Common.DateCalculator(Calendar.DATE, 15);
+		String start = Common.DateCalculator(Calendar.DATE, 0);
+		String end = Common.DateCalculator(Calendar.DATE, 15);
 		
 		JsonObject object = new JsonObject();
-		
-		object.addProperty("url", "{URL1}");
-		object.addProperty("date", date);
-		
-		urlList.add(object);
-		
-		object = new JsonObject();
-		object.addProperty("url", "{URL2}");
-		object.addProperty("date", date);
+		object.addProperty("url", "URL1");
+		object.addProperty("start", start);
+		object.addProperty("end", end);
 		
 		urlList.add(object);
 		
 		object = new JsonObject();
-		object.addProperty("url", "{URL3}");
-		object.addProperty("date", date);
+		object.addProperty("url", "URL2");
+		object.addProperty("start", start);
+		object.addProperty("end", end);
+		
+		urlList.add(object);
+		
+		object = new JsonObject();
+		object.addProperty("url", "URL3");
+		object.addProperty("start", start);
+		object.addProperty("end", end);
 		
 		urlList.add(object);
 	}

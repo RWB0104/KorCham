@@ -120,10 +120,12 @@ public class ConfigManager
 		for (int i = 0; i < Common.urlList.size(); i++)
 		{
 			String url = Common.urlList.get(i).getAsJsonObject().get("url").getAsString();
-			String date = Common.urlList.get(i).getAsJsonObject().get("date").getAsString();
+			String start = Common.urlList.get(i).getAsJsonObject().get("start").getAsString();
+			String end = Common.urlList.get(i).getAsJsonObject().get("end").getAsString();
 			
 			Common.Sysln("URL: " + url);
-			Common.Sysln("Date: " + date);
+			Common.Sysln("Start: " + start);
+			Common.Sysln("End: " + end);
 		}
 		
 		System.out.println();
@@ -131,6 +133,12 @@ public class ConfigManager
 		Common.Sysln("사운드 테스트");
 		
 		soundManager.Play();
+		
+		System.out.println();
+		
+		getConfig();
+		
+		Common.Sysln("설정파일 갱신 완료");
 		
 		System.out.println();
 	}

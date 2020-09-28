@@ -3,6 +3,7 @@ package main.java.common;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import com.google.gson.JsonArray;
 
@@ -129,5 +130,35 @@ public class Common
 		{
 			System.out.println("[" + Now() + "] 표시할 수 없는 객체가 입력되었습니다.");
 		}
+	}
+	
+	/**
+	 * 문자열을 yyyy.MM.dd 형태의 날짜 객체로 변환하는 함수
+	 * 
+	 * @param {String} str: 날짜 문자열
+	 * 
+	 * @return {Date} date: 날짜 객체
+	 */
+	public static Date ConvertDate(String str)
+	{
+		Date date;
+		
+		// 문자열 날짜 변환 시도
+		try
+		{
+			SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy.MM.dd");
+			
+			date = timeFormat.parse(str);
+		}
+		
+		// 오류
+		catch (Exception e)
+		{
+			date = null;
+			
+			Sysln("잘못된 날짜 포맷입니다.");
+		}
+		
+		return date;
 	}
 }

@@ -2,6 +2,7 @@ package main.java.core;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -138,7 +139,21 @@ public class Crawler
 		try
 		{
 			String url = Common.urlList.get(num).getAsJsonObject().get("url").getAsString();
-			String date = Common.urlList.get(num).getAsJsonObject().get("date").getAsString();
+			
+			String start = Common.urlList.get(num).getAsJsonObject().get("start").getAsString();
+			String end = Common.urlList.get(num).getAsJsonObject().get("end").getAsString();
+			
+			// 시작날짜 객체가 유효하지 않을 경우
+			if (start.equals(""))
+			{
+				start = "1970.01.01";
+			}
+			
+			// 종료날짜 객체가 유효하지 않을 경우
+			if (end.equals(""))
+			{
+				end = "2099.12.31";
+			}
 			
 			double connectStart = System.currentTimeMillis();
 			
@@ -186,24 +201,37 @@ public class Crawler
 			// 행의 수만큼 반복
 			for (int i = 1; i < row; i++)
 			{
-				// 열의 수만큼 반복
-				for (int j = 2; j < col; j++)
-				{
-					// 값의 내용이 마감 혹은 빈 칸이 아닐 경우
-					if (!getBody(table, i, j).equals("마감") && !getBody(table, i, j).equals(""))
-					{
-						// 신청 가능 인원 수 출력
-						Common.Sysln(index + "번 째 " + getBody(table, i, 0) + " " + getBody(table, i, 1) + " " + getHeader(table, j) + "(" + getBody(table, i, j) + ")");
-						log.LogWrite(index + "번 째 " + getBody(table, i, 0) + " " + getBody(table, i, 1) + " " + getHeader(table, j) + "(" + getBody(table, i, j) + ")");
-						
-						buzz = true;
-					}
-				}
+				Date target = Common.ConvertDate(getBody(table, i, 0).replace(" ", ""));
 				
-				// 날짜가 지정된 날짜와 동일할 경우
-				if (getBody(table, i, 0).replace(" ", "").equals(date.replace(" ", "")))
+				Date startDate = Common.ConvertDate(start.replace(" ", ""));
+				Date endDate = Common.ConvertDate(end.replace(" ", ""));
+				
+				int startCompare = startDate.compareTo(target);
+				int endCompare = endDate.compareTo(target);
+				
+				// 시작날짜 이상일 경우
+				if (startCompare <= 0)
 				{
-					break;
+					// 열의 수만큼 반복
+					for (int j = 2; j < col; j++)
+					{
+						// 종료날짜를 벗어날 경우
+						if (endCompare < 0)
+						{
+							break;
+						}
+						
+						// 값의 내용이 마감 혹은 빈 칸이 아닐 경우
+						if (!getBody(table, i, j).equals("마감") && !getBody(table, i, j).equals(""))
+						{
+							
+							// 신청 가능 인원 수 출력
+							Common.Sysln(index + "번 째 " + getBody(table, i, 0) + " " + getBody(table, i, 1) + " " + getHeader(table, j) + "(" + getBody(table, i, j) + ")");
+							log.LogWrite(index + "번 째 " + getBody(table, i, 0) + " " + getBody(table, i, 1) + " " + getHeader(table, j) + "(" + getBody(table, i, j) + ")");
+							
+							buzz = true;
+						}
+					}
 				}
 			}
 			
