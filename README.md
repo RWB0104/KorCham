@@ -2,7 +2,25 @@
 상공회의소 자격증 자리확인 매크로
 
 <p align="center">
+	<img src="https://user-images.githubusercontent.com/50317129/97077759-40185380-1621-11eb-97a6-4e8a17366284.png" width="600px" alt="NewCharm" title="NewCharm">
+</p>
+
+<p align="center">
+	<h2>위 프로그램은 테스트 목적으로 제작되었으며, 불특정 다수에게 배포되지 않습니다.</h2>
+</p>
+
+상공회의소의 보안조치로 Korcham은 이제 동작이 전혀 불가능하다. 상시시험 페이지에만 보안을 잔뜩걸어놨더라. 이왕 걸어놓을거 다 걸어놓지 않는게 웃기지만. 이왕 붙인거 reChaptcha는 로그인에다도 붙이길 바란다.
+
+내 나름의 공부 수준도 확인해보고 싶고, 예전부터 UI가 없는 프로그램이였던게 마음에 걸렸었다. 요즘 공부하는 C#의 Mahapps를 적극 활용하여 NewCham을 만들었다. 동작은 이상없이 잘 되는 것 같다. 이젠 코로나 여파도 많이 줄어 자리도 많은 것 같아 굳이 필요없게 된 것 같다.
+
+---
+
+<p align="center">
 	<img src="https://user-images.githubusercontent.com/50317129/88394919-34877780-cdfb-11ea-9601-3e583e6babb0.png" alt="Main" title="Main">
+</p>
+
+<p align="center">
+	<h2>현재 Korcham 프로그램은 이제 어떠한 방법을 써도 동작이 불가능합니다.</h2>
 </p>
 
 <p align="center">
@@ -23,9 +41,18 @@
 <br />
 이 프로그램은 그러한 취지에서 개발됐다.
 
-## **KorCham 3.3 RELEASE (Latest)**
+## **NewCharm 1.0 RELEASE (Latest, Not Published)**
+
++ UI 추가
++ 데이터 호출 로직 개선
++ 프로그램 내부에서의 능동적인 설정 가능
+
+해당 프로그램은 배포되지 않습니다.
+
+## **KorCham 3.3 RELEASE**
 
 + 시작일, 종료일 기능 개선
++ 설정파일 확인(2번 메뉴) 실행 시 설정값 자동 반영 기능 추가
 
 앞으로는 start와 end를 통해 원하는 구간만을 지정하여 확인 가능합니다.
 
