@@ -6,8 +6,9 @@
 </p>
 
 <p align="center">
-	<h2>위 프로그램은 테스트 목적으로 제작되었으며, 불특정 다수에게 배포되지 않습니다.</h2>
+	<b>위 프로그램은 테스트 목적으로 제작되었으며, 불특정 다수에게 배포되지 않습니다.</b>
 </p>
+<br />
 
 상공회의소의 보안조치로 Korcham은 이제 동작이 전혀 불가능하다. 상시시험 페이지에만 보안을 잔뜩걸어놨더라. 이왕 걸어놓을거 다 걸어놓지 않는게 웃기지만. 이왕 붙인거 reChaptcha는 로그인에다도 붙이길 바란다.
 
@@ -27,11 +28,12 @@
 </p>
 
 <p align="center">
-	<h2>현재 Korcham 프로그램은 이제 어떠한 방법을 써도 동작이 불가능합니다.</h2>
+	<b>현재 소스로 컴파일된 Korcham은 더이상 동작하지 않습니다.</b>
 </p>
+<br />
 
 <p align="center">
-	<a href="https://github.com/RWB0104/KorCham/releases">다운로드</a>
+	<a href="https://github.com/RWB0104/KorCham/releases"><del>다운로드</del></a>
 </p>
 
 <p align="center">
